@@ -8,6 +8,11 @@ type Message = {
     Body: string
 }
 
+/// Gets the connection string from app.config (NOTE: refactor into Utils module)
+let getConnStr() = 
+    // TODO: get from ConfigurationManager / app.config
+    "my connection string..."
+
 
 /// This pure function creates a notification (or not) based on the stock info and thresholds.
 let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThresholds) = 
@@ -46,5 +51,6 @@ let checkStockAbstract getLatest getThresholds (symbol: string) (email: string) 
 /// This function contains the logic to run the feature.
 let checkStock (symbol: string) (email: string) =
     async {
-        do! checkStockAbstract StockApi.getLatest Database.getThresholds symbol email
+        let dbGetThresholds = Database.getThresholds (getConnStr()) // partially apply
+        do! checkStockAbstract StockApi.getLatest dbGetThresholds symbol email
     }
