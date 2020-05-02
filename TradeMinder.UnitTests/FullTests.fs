@@ -24,9 +24,11 @@ let ``Full test: when stock is within thresholds, should not create a message.``
 
     // Stub the Database
     let getThresholdsStub symbol email =
-        symbol |> should equal "MSFT"
-        email |> should equal "jmarr@microdesk.com"
-        Some thresholds
+        async {
+            symbol |> should equal "MSFT"
+            email |> should equal "jmarr@microdesk.com"
+            return Some thresholds
+        }
         
     // Run
     FullyTestable.StockThresholdNotifier.checkStockAbstract getLatestStub getThresholdsStub "MSFT" "jmarr@microdesk.com"

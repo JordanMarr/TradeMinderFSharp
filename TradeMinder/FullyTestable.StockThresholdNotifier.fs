@@ -27,7 +27,7 @@ let checkStockAbstract getLatest getThresholds (symbol: string) (email: string) 
     async {
         // 1) IO - Get necessary data
         let! stock = getLatest symbol
-        let thresholds = getThresholds symbol email
+        let! thresholds = getThresholds symbol email
 
         match stock, thresholds with
         | Some stock, Some thresholds -> 
