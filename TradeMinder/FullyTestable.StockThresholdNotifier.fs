@@ -1,5 +1,4 @@
 ﻿module FullyTestable.StockThresholdNotifier
-
 open StockApi
 
 /// Represents a notification alert message that will be sent to the user.
