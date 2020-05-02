@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="StockApi.fs" />
+    <Compile Include="Messaging.fs" />
+    <Compile Include="Database.fs" />
+    <Compile Include="Untestable.StockThresholdNotifier.fs" />
+    <Compile Include="PartiallyTestable.StockThresholdNotifier.fs" />
+    <Compile Include="FullyTestable.StockThresholdNotifier.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+</Project>

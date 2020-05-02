@@ -1,0 +1,11 @@
+obj
+bin
+*.bak
+.vs
+.fake
+packages
+paket-files
+*.dll
+Use
+/ProjectDocs/Architecture/~$Rolling Schedule Architecture.pptx
+/Product/Source/.idea

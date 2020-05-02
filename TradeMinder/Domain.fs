@@ -1,0 +1,3 @@
+module Entities
+
+let todo = ()
