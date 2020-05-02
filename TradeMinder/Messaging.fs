@@ -1,7 +1,10 @@
 ﻿module Messaging
 
+type Email = string
+type Body = string
+
 /// Sends an email.
-let sendMessage (email: string) (body: string) =
+let sendMessage (email: Email) (body: Body) =
     async { 
         printfn "Sending message..."
         do! Async.Sleep 1000

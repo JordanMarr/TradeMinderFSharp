@@ -8,21 +8,15 @@ type Message = {
     Body: string
 }
 
-/// Gets the connection string from app.config (NOTE: refactor into Utils module)
-let getConnStr() = 
-    // TODO: get from ConfigurationManager / app.config
-    "my connection string..."
-
 /// This function contains the logic to run the feature.
 let checkStock (symbol: string) (email: string) =
     async {
         // 1) Get data required
         let! stock = StockApi.getLatest symbol
-        let! thresholds = Database.getThresholds (getConnStr()) symbol email
+        let! thresholds = Database.getThresholds (Config.getConnStr()) symbol email
 
         match stock, thresholds with
         | Some stock, Some thresholds -> 
-
             // 2) Process business rules to create an alert (or not).
             let message = 
                 if stock.Value > thresholds.High 

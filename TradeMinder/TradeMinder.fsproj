@@ -7,6 +7,7 @@
     <Compile Include="StockApi.fs" />
     <Compile Include="Messaging.fs" />
     <Compile Include="Database.fs" />
+    <Compile Include="Config.fs" />
     <Compile Include="Untestable.StockThresholdNotifier.fs" />
     <Compile Include="PartiallyTestable.StockThresholdNotifier.fs" />
     <Compile Include="FullyTestable.StockThresholdNotifier.fs" />
