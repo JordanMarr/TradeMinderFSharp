@@ -1,11 +1,6 @@
 ﻿module FullyTestable.StockThresholdNotifier
 open StockApi
-
-/// Represents a notification alert message that will be sent to the user.
-type Message = {
-    Email: string
-    Body: string
-}
+open Messaging
 
 /// This pure function creates a notification (or not) based on the stock info and thresholds.
 let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThresholds) = 
@@ -15,8 +10,8 @@ let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThre
     then Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M is less than the minimum value of %M." stock.Symbol stock.Value thresholds.Low })
     else None   
     
-/// Testable function
-let checkStockAbstract getLatest getThresholds sendMessage (symbol: string) (email: string) =
+/// Fully testable "template" function
+let checkStockTemplate getLatest getThresholds sendMessage (symbol: string) (email: string) =
     async {
         // 1) IO - Get necessary data
         let! stock = getLatest symbol
@@ -32,7 +27,7 @@ let checkStockAbstract getLatest getThresholds sendMessage (symbol: string) (ema
             match message with 
             | Some msg -> 
                 printfn "Sending message..."
-                do! sendMessage msg.Email msg.Body
+                do! sendMessage msg
             | None -> 
                 printfn "No message was sent."
 
@@ -43,7 +38,7 @@ let checkStockAbstract getLatest getThresholds sendMessage (symbol: string) (ema
 /// This function contains the logic to run the feature.
 let checkStock (symbol: string) (email: string) =
     async {
-        do! checkStockAbstract 
+        do! checkStockTemplate 
                 StockApi.getLatest 
                 (Database.getThresholds (Config.getConnStr())) 
                 Messaging.sendMessage symbol email

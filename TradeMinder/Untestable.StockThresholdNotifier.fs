@@ -1,11 +1,6 @@
 ﻿module Untestable.StockThresholdNotifier
 open StockApi
-
-/// Represents a notification alert message that will be sent to the user.
-type Message = {
-    Email: string
-    Body: string
-}
+open Messaging
 
 /// This function contains the logic to run the feature.
 let checkStock (symbol: string) (email: string) =
@@ -28,7 +23,7 @@ let checkStock (symbol: string) (email: string) =
             match message with 
             | Some msg -> 
                 printfn "Sending message..."
-                do! Messaging.sendMessage msg.Email msg.Body
+                do! Messaging.sendMessage msg
             | None -> 
                 printfn "No message was sent."
 

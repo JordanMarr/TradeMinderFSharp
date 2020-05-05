@@ -1,11 +1,6 @@
 module PartiallyTestable.StockThresholdNotifier
 open StockApi
-
-/// Represents a notification alert message that will be sent to the user.
-type Message = {
-    Email: string
-    Body: string
-}
+open Messaging
 
 /// REFACTOR FOR TESTABILITY: Extract a pure function with all necessary data passed in as args.  We can now easily test this business logic!
 let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThresholds) = 
@@ -31,7 +26,7 @@ let checkStock (symbol: string) (email: string) =
             match message with 
             | Some msg -> 
                 printfn "Sending message..."
-                do! Messaging.sendMessage msg.Email msg.Body
+                do! Messaging.sendMessage msg
             | None -> 
                 printfn "No message was sent."
 

@@ -10,6 +10,9 @@ type StockInfo = {
 let getLatest(symbol: string) =
     async {
         // TODO: Implement stock web api
-        return Some { Symbol = "MSFT"; Date = DateTime.Now; Value = 56.50M }
+        return
+            if symbol = "MSFT"
+            then Some { Symbol = "MSFT"; Date = DateTime.Now; Value = 56.50M }
+            else None
     }
     

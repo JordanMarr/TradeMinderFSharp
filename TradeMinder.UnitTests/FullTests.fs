@@ -2,6 +2,7 @@
 open NUnit.Framework
 open StockApi
 open Database
+open Messaging
 open System
 open FsUnit
 
@@ -16,21 +17,26 @@ let ``Full test: when stock is within thresholds, should not create a message.``
     let thresholds = { NotificationThresholds.Symbol = "MSFT"; Email = "jmarr@microdesk.com"; High = 15.0M; Low = 4.0M }
     
     // Stub the StockApi
-    let getLatestStub symbol = 
+    let getLatest symbol = 
         symbol |> should equal "MSFT"
         async {
             return Some stock
         } 
 
     // Stub the Database
-    let getThresholdsStub symbol email =
+    let getThresholds symbol email =
         async {
             symbol |> should equal "MSFT"
             email |> should equal "jmarr@microdesk.com"
             return Some thresholds
         }
+
+    let sendMessage (msg: Message) =
+        async {
+            return ()
+        }
         
     // Run
-    FullyTestable.StockThresholdNotifier.checkStockAbstract getLatestStub getThresholdsStub "MSFT" "jmarr@microdesk.com"
+    FullyTestable.StockThresholdNotifier.checkStockTemplate getLatest getThresholds sendMessage "MSFT" "jmarr@microdesk.com"
     |> Async.RunSynchronously
     
