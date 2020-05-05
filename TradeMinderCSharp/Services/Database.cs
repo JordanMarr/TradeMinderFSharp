@@ -8,6 +8,9 @@ namespace TradeMinderCSharp.Services
 {
     public class Database : Interfaces.IDatabase
     {
+        /// <summary>
+        /// Gets data info from the database
+        /// </summary>
         public async Task<NotificationThresholds> GetThresholds(string symbol, string email)
         {
             await Task.Delay(1000);

@@ -4,11 +4,10 @@ open Messaging
 
 /// REFACTOR FOR TESTABILITY: Extract a pure function with all necessary data passed in as args.  We can now easily test this business logic!
 let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThresholds) = 
-    if stock.Value > thresholds.High 
-    then Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M exceeds the maximum value of %M." stock.Symbol stock.Value thresholds.High })
-    elif stock.Value < thresholds.Low 
-    then Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M is less than the minimum value of %M." stock.Symbol stock.Value thresholds.Low })
-    else None    
+    match stock.Value with
+    | value when value > thresholds.High -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M exceeds the maximum value of %M." stock.Symbol stock.Value thresholds.High })
+    | value when value < thresholds.Low -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M is less than the minimum value of %M." stock.Symbol stock.Value thresholds.Low })
+    | _ -> None 
 
 /// This function contains the logic to run the feature.
 let checkStock (symbol: string) (email: string) =

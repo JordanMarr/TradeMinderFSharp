@@ -9,11 +9,14 @@ namespace TradeMinderCSharp.Services
 {
     public class MessageService : Interfaces.IMessageService
     {
-        public async Task SendMessage(string email, string body)
+        /// <summary>
+        /// Sends an email.
+        /// </summary>
+        public async Task SendMessage(Entities.Message message)
         {
             Console.Write("Sending message...");
             await Task.Delay(1000);
-            Console.WriteLine($"To: {email}\nBody: {body}");
+            Console.WriteLine($"To: {message.Email}\nBody: {message.Body}");
         }
     }
 }

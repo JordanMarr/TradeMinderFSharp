@@ -7,6 +7,6 @@ namespace TradeMinderCSharp.Interfaces
 {
     public interface IMessageService
     {
-        Task SendMessage(string email, string body);
+        Task SendMessage(Entities.Message message);
     }
 }

@@ -8,6 +8,9 @@ namespace TradeMinderCSharp.Services
 {
     public class StockApi : Interfaces.IStockApi
     {
+        /// <summary>
+        /// Gets the latest stock info for the given symbol.
+        /// </summary>
         public async Task<StockInfo> GetLatest(string symbol)
         {
             await Task.Delay(1000);

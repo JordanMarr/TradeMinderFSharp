@@ -7,6 +7,7 @@ type StockInfo = {
     Value: decimal
 }
 
+/// Gets the latest stock info for the given symbol.
 let getLatest(symbol: string) =
     async {
         // TODO: Implement stock web api
