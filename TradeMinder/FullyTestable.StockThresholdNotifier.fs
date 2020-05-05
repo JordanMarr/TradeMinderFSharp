@@ -39,6 +39,6 @@ let checkStock (symbol: string) (email: string) =
     async {
         do! checkStockTemplate 
                 StockApi.getLatest 
-                (Database.getThresholds (Config.getConnStr())) 
+                (Database.getThresholds (Config.getConnectionString())) 
                 Messaging.sendMessage symbol email
     }

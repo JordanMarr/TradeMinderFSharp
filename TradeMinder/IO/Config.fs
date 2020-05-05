@@ -2,5 +2,5 @@
 module Config
 
 /// Gets the connection string from app.config (NOTE: refactor into Utils module)
-let getConnStr() = 
+let getConnectionString() = 
     "my connection string..."

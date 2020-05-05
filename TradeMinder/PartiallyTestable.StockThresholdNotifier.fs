@@ -14,7 +14,7 @@ let checkStock (symbol: string) (email: string) =
     async {
         // 1) IO - Get data required
         let! stock = StockApi.getLatest symbol
-        let! thresholds = Database.getThresholds (Config.getConnStr()) symbol email
+        let! thresholds = Database.getThresholds (Config.getConnectionString()) symbol email
 
         match stock, thresholds with
         | Some stock, Some thresholds -> 
