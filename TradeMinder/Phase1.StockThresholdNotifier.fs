@@ -10,13 +10,17 @@ let checkStock (symbol: string) (email: string) =
         let! thresholds = Database.getThresholds (Config.getConnectionString()) symbol email
 
         match stock, thresholds with
-        | Some stock, Some thresholds -> 
+        | Some stock, Some thresh -> 
             // 2) Process business rules to create an alert (or not).
             let message = 
                 match stock.Value with
-                | value when value > thresholds.High -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M exceeds the maximum value of %M." stock.Symbol stock.Value thresholds.High })
-                | value when value < thresholds.Low -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M is less than the minimum value of %M." stock.Symbol stock.Value thresholds.Low })
-                | _ -> None
+                | value when value > thresh.High -> 
+                    Some ({ Email = thresh.Email
+                            Body = sprintf "'%s' value $%M exceeds max: %M." stock.Symbol value thresh.High })
+                | value when value < thresh.Low -> 
+                    Some ({ Email = thresh.Email
+                            Body = sprintf "'%s' value $%M is less than min %M." stock.Symbol value thresh.Low })
+                | _ -> None 
 
             // 3) Send the message (if one exists)
             match message with 

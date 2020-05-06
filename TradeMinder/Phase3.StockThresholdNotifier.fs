@@ -3,11 +3,15 @@ open StockApi
 open Messaging
 
 /// This pure function creates a notification (or not) based on the stock info and thresholds.
-let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThresholds) = 
+let maybeCreateMessage (stock: StockInfo) (thresh: Database.NotificationThresholds) = 
     match stock.Value with
-    | value when value > thresholds.High -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M exceeds the maximum value of %M." stock.Symbol stock.Value thresholds.High })
-    | value when value < thresholds.Low -> Some ({ Email = thresholds.Email; Body = sprintf "'%s' stock value of $%M is less than the minimum value of %M." stock.Symbol stock.Value thresholds.Low })
-    | _ -> None
+    | value when value > thresh.High -> 
+        Some ({ Email = thresh.Email
+                Body = sprintf "'%s' value $%M exceeds max: %M." stock.Symbol value thresh.High })
+    | value when value < thresh.Low -> 
+        Some ({ Email = thresh.Email
+                Body = sprintf "'%s' value $%M is less than min %M." stock.Symbol value thresh.Low })
+    | _ -> None 
     
 /// This "template" function contains the fully testable logic to run the feature.
 let checkStockTemplate getStock getThresholds sendMessage (symbol: string) (email: string) =
