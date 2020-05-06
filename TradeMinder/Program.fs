@@ -3,7 +3,7 @@ let main argv =
     
     match argv with
     | [| symbol; email |] -> 
-        FullyTestable.StockThresholdNotifier.checkStock symbol email
+        Phase3.StockThresholdNotifier.checkStock symbol email
         |> Async.RunSynchronously
 
     | _ -> 

@@ -5,6 +5,7 @@ open Database
 open Messaging
 open System
 open FsUnit
+open Phase3
 
 [<Test>]
 let ``Full test: when stock is within thresholds, should not create a message.``() =
@@ -28,5 +29,5 @@ let ``Full test: when stock is within thresholds, should not create a message.``
         async { return () }
         
     // Run
-    FullyTestable.StockThresholdNotifier.checkStockTemplate getLatest getThresholds sendMessage "MSFT" "jmarr@microdesk.com"
+    StockThresholdNotifier.checkStockTemplate getLatest getThresholds sendMessage "MSFT" "jmarr@microdesk.com"
     |> Async.RunSynchronously

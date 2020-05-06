@@ -1,4 +1,4 @@
-﻿module Untestable.StockThresholdNotifier
+﻿module Phase1.StockThresholdNotifier
 open StockApi
 open Messaging
 

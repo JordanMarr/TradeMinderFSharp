@@ -8,9 +8,9 @@
     <Compile Include="IO\Messaging.fs" />
     <Compile Include="IO\Database.fs" />
     <Compile Include="IO\Config.fs" />
-    <Compile Include="Untestable.StockThresholdNotifier.fs" />
-    <Compile Include="PartiallyTestable.StockThresholdNotifier.fs" />
-    <Compile Include="FullyTestable.StockThresholdNotifier.fs" />
+    <Compile Include="Phase1.StockThresholdNotifier.fs" />
+    <Compile Include="Phase2.StockThresholdNotifier.fs" />
+    <Compile Include="Phase3.StockThresholdNotifier.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

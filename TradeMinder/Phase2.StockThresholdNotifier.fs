@@ -1,4 +1,4 @@
-module PartiallyTestable.StockThresholdNotifier
+module Phase2.StockThresholdNotifier
 open StockApi
 open Messaging
 
