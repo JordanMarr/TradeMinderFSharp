@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TradeMinderCSharp.Entities;
+using YahooFinanceApi;
 
 namespace TradeMinderCSharp.Services
 {
@@ -13,10 +14,14 @@ namespace TradeMinderCSharp.Services
         /// </summary>
         public async Task<StockInfo> GetStock(string symbol)
         {
-            await Task.Delay(1000);
-            if (symbol == "MSFT")
+            var securities = await Yahoo.Symbols(symbol).Fields(Field.Symbol, Field.RegularMarketPrice).QueryAsync();
+            var stock = securities[symbol];
+            
+            if (stock != null)
             {
-                return new StockInfo { Symbol = "MSFT", Date = DateTime.Now, Value = 56.50M };
+                return new StockInfo { Symbol = symbol, 
+                                       Date = DateTime.Now, 
+                                       Value = Convert.ToDecimal(stock.RegularMarketPrice) };
             }
             else
             {
