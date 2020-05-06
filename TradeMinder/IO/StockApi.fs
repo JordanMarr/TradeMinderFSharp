@@ -1,11 +1,7 @@
 module StockApi
 open System
 
-type StockInfo = {
-    Symbol: string
-    Date: DateTime
-    Value: decimal
-}
+type StockInfo = { Symbol: string;  Date: DateTime; Value: decimal; }
 
 /// Gets the latest stock info for the given symbol.
 let getLatest(symbol: string) =

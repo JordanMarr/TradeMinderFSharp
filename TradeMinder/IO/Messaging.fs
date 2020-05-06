@@ -1,10 +1,7 @@
 ﻿module Messaging
 
 /// Represents a notification alert message that will be sent to the user.
-type Message = {
-    Email: string
-    Body: string
-}
+type Message = { Email: string; Body: string }
 
 /// Sends an email.
 let sendMessage (message: Message) =
