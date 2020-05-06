@@ -7,6 +7,6 @@ namespace TradeMinderCSharp.Interfaces
 {
     public interface IStockApi
     {
-        Task<Entities.StockInfo> GetLatest(string symbol);
+        Task<Entities.StockInfo> GetStock(string symbol);
     }
 }

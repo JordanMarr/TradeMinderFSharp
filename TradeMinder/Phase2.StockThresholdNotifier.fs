@@ -13,7 +13,7 @@ let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThre
 let checkStock (symbol: string) (email: string) =
     async {
         // 1) IO - Get data required
-        let! stock = StockApi.getLatest symbol
+        let! stock = StockApi.getStock symbol
         let! thresholds = Database.getThresholds (Config.getConnectionString()) symbol email
 
         match stock, thresholds with

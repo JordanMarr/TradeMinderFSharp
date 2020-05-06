@@ -20,7 +20,7 @@ namespace TradeMinderCSharp.UnitTests
             // Stub the StockApi
             var stockApi = new Mock<IStockApi>();
             stockApi
-                .Setup(s => s.GetLatest(It.IsAny<string>()))
+                .Setup(s => s.GetStock(It.IsAny<string>()))
                 .Returns(Task.FromResult(stock))
                 .Verifiable();
 
@@ -43,7 +43,7 @@ namespace TradeMinderCSharp.UnitTests
                 .Wait();
 
             // Assert expected argument value
-            stockApi.Verify(s => s.GetLatest("MSFT"));
+            stockApi.Verify(s => s.GetStock("MSFT"));
 
             // Assert expected argument values
             database.Verify(d => d.GetThresholds("MSFT", "jmarr@microdesk.com"));

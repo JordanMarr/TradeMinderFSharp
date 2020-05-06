@@ -10,10 +10,10 @@ let maybeCreateMessage (stock: StockInfo) (thresholds: Database.NotificationThre
     | _ -> None
     
 /// This "template" function contains the fully testable logic to run the feature.
-let checkStockTemplate getLatest getThresholds sendMessage (symbol: string) (email: string) =
+let checkStockTemplate getStock getThresholds sendMessage (symbol: string) (email: string) =
     async {
         // 1) IO - Get necessary data
-        let! stock = getLatest symbol
+        let! stock = getStock symbol
         let! thresholds = getThresholds symbol email
 
         match stock, thresholds with
@@ -34,6 +34,6 @@ let checkStockTemplate getLatest getThresholds sendMessage (symbol: string) (ema
 /// Build up run function by partially applying dependencies.
 let checkStock = 
     checkStockTemplate
-        StockApi.getLatest 
+        StockApi.getStock 
         (Database.getThresholds (Config.getConnectionString())) 
         Messaging.sendMessage

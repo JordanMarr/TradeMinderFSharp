@@ -37,7 +37,7 @@ namespace TradeMinderCSharp
         public async Task CheckStock(string symbol, string email)
         {
             // 1) IO - Get necessary data
-            var stock = await _stockApi.GetLatest(symbol);
+            var stock = await _stockApi.GetStock(symbol);
             var thresholds = await _database.GetThresholds(symbol, email);
 
             if (stock != null && thresholds != null)

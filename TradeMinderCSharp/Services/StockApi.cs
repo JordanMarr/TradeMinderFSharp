@@ -11,12 +11,12 @@ namespace TradeMinderCSharp.Services
         /// <summary>
         /// Gets the latest stock info for the given symbol.
         /// </summary>
-        public async Task<StockInfo> GetLatest(string symbol)
+        public async Task<StockInfo> GetStock(string symbol)
         {
             await Task.Delay(1000);
             if (symbol == "MSFT")
             {
-                return new StockInfo { Symbol = "MSFT", Date = DateTime.Now, Value = 56.50 };
+                return new StockInfo { Symbol = "MSFT", Date = DateTime.Now, Value = 56.50M };
             }
             else
             {
