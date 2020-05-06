@@ -23,11 +23,8 @@ let checkStock (symbol: string) (email: string) =
 
             // 3) IO -> Send the message (if one exists)
             match message with 
-            | Some msg -> 
-                printfn "Sending message..."
-                do! Messaging.sendMessage msg
-            | None -> 
-                printfn "No message was sent."
+            | Some msg -> do! Messaging.sendMessage msg
+            | None -> printfn "No message was sent."
 
         | _ -> 
             printfn "Requires stock and threshold."
