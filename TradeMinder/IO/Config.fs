@@ -3,4 +3,5 @@ module Config
 
 /// Gets the connection string from app.config (NOTE: refactor into Utils module)
 let getConnectionString() = 
-    "my connection string..."
+    // System.ConfigurationManager.ConnectionStrings["MyConn"]
+    @"Data Source=C:\Users\jmarr\Documents\VSCode\TradeMinder\Sqlite\TradeMinder.db"

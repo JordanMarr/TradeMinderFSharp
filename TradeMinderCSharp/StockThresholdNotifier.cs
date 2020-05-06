@@ -48,7 +48,6 @@ namespace TradeMinderCSharp
                 // 3) IO - Send the message (if one exists)
                 if (message != null)
                 {
-                    Console.WriteLine("Sending message...");
                     await _messageSvc.SendMessage(message);
                 }
                 else

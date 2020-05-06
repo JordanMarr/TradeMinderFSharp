@@ -9,7 +9,7 @@ namespace TradeMinderCSharp.Services
         public string GetConnectionString()
         {
             // System.ConfigurationManager.ConnectionStrings["MyConn"];
-            return "conn...";
+            return @"Data Source=C:\Users\jmarr\Documents\VSCode\TradeMinder\Sqlite\TradeMinder.db";
         }
     }
 }

@@ -16,7 +16,7 @@ namespace TradeMinderCSharp.Services
             await Task.Delay(1000);
             if (symbol == "MSFT")
             {
-                return new StockInfo { Symbol = "MSFT" };
+                return new StockInfo { Symbol = "MSFT", Date = DateTime.Now, Value = 56.50 };
             }
             else
             {

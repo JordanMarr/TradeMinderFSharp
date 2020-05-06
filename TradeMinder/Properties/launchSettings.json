@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TradeMinder": {
+      "commandName": "Project",
+      "commandLineArgs": "MSFT jmarr@microdesk.com"
+    }
+  }
+}
