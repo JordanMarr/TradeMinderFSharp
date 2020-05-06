@@ -7,9 +7,9 @@ namespace TradeMinderCSharp
 {
     public class StockThresholdNotifier
     {
-        IDatabase _database;
-        IStockApi _stockApi;
-        IMessageService _messageSvc;
+        private IDatabase _database;
+        private IStockApi _stockApi;
+        private IMessageService _messageSvc;
 
         public StockThresholdNotifier(IDatabase database, IStockApi stockApi, IMessageService messageSvc)
         {
