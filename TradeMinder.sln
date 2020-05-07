@@ -7,9 +7,11 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TradeMinder", "TradeMinder\
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TradeMinder.UnitTests", "TradeMinder.UnitTests\TradeMinder.UnitTests.fsproj", "{30A62C8E-745A-48D2-AB4C-35ECD44008CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeMinderCSharp", "TradeMinderCSharp\TradeMinderCSharp.csproj", "{66FCDBEB-E0C3-46A0-B500-10025F040232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeMinderCSharp", "TradeMinderCSharp\TradeMinderCSharp.csproj", "{66FCDBEB-E0C3-46A0-B500-10025F040232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeMinderCSharp.UnitTests", "TradeMinderCSharp.UnitTests\TradeMinderCSharp.UnitTests.csproj", "{BB46DACE-74CE-4986-8A4D-68FF24AA2C06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeMinderCSharp.UnitTests", "TradeMinderCSharp.UnitTests\TradeMinderCSharp.UnitTests.csproj", "{BB46DACE-74CE-4986-8A4D-68FF24AA2C06}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ShoppingCart", "ShoppingCart\ShoppingCart.fsproj", "{4AA9FB9D-D308-4BC7-99E5-6232C3A8FFC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{BB46DACE-74CE-4986-8A4D-68FF24AA2C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB46DACE-74CE-4986-8A4D-68FF24AA2C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB46DACE-74CE-4986-8A4D-68FF24AA2C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA9FB9D-D308-4BC7-99E5-6232C3A8FFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA9FB9D-D308-4BC7-99E5-6232C3A8FFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA9FB9D-D308-4BC7-99E5-6232C3A8FFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA9FB9D-D308-4BC7-99E5-6232C3A8FFC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
