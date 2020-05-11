@@ -22,7 +22,6 @@ let checkStockTemplate getStock getThresholds sendMessage (symbol: string) (emai
 
         match stock, thresholds with
         | Some stock, Some thresholds -> 
-
             // 2) Pure - Process business rules to create an alert (or not).
             let message = maybeCreateMessage stock thresholds
 
