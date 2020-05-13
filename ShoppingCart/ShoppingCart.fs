@@ -22,7 +22,7 @@ and CartItem = {
 
 /// Calculates the total (pure / testable function)
 let calculateTotal items discount =
-    let subTotal = items |> List.sumBy (fun item -> item.Price)
+    let subTotal = items |> List.sumBy (fun item -> item.Price * decimal item.Qty)
     // Total:
     match discount with
     | Discount amt -> subTotal - (abs amt)
